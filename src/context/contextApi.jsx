@@ -1,23 +1,24 @@
-import { createContext, useState, useEffect } from "react";
-import { fetchDataFromApi } from "../utils/api";
+import { createContext, useState, useEffect } from 'react';
+import { fetchDataFromApi } from '../utils/api';
+
 export const Context = createContext();
 
 export const ContextProvider = ({ children }) => {
-  const [selectedCategory, setSelectedCategory] = useState("New");
-    const [searchResult, setSearchResult] = useState([])
+  const [selectedCategory, setSelectedCategory] = useState('New');
+  const [searchResult, setSearchResult] = useState([]);
+
   useEffect(() => {
-    fetchCategotry(selectedCategory);
+    fetchCategory(selectedCategory);
   }, [selectedCategory]);
 
-  const fetchCategotry = (param) => {
-    fetchDataFromApi(`search/?q=${param}`).then(({contents}) => {
-      setSearchResult(contents)
+  const fetchCategory = (query) => {
+    fetchDataFromApi(`search/?q=${query}`).then(({ contents }) => {
+      setSearchResult(contents);
     });
   };
-  console.log(searchResult)
 
   return (
-    <Context.Provider value={{ selectedCategory, setSelectedCategory }}>
+    <Context.Provider value={{ selectedCategory, setSelectedCategory, searchResult }}>
       {children}
     </Context.Provider>
   );

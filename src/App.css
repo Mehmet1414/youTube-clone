@@ -44,3 +44,17 @@
 .read-the-docs {
   color: #888;
 }
+
+.feed{
+  margin-top: 40px;
+  margin-left: 120px;
+
+}
+.left-nav-item{
+  transition: all 0.3s;
+}
+.left-nav-item:hover{
+  background-color: rgba(var(--bs-danger-rgb),var(--bs-bg-opacity))!important;
+  opacity: 0.6;
+  transition: all 0.3s;
+}

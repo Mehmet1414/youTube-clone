@@ -2,7 +2,7 @@ import { AiFillYoutube, AiOutlineBell, AiOutlineSearch } from "react-icons/ai";
 
 const Header = () => {
   return (
-    <header className="navbar bg-dark text-light p-3">
+    <header className="navbar bg-dark text-light p-3 fixed-top">
       <div className=" d-flex align-items-center gap-3">
         <AiFillYoutube className=" fs-1 text-danger" role={"button"} />
         <h2 role={"button"}>YouTube</h2>
