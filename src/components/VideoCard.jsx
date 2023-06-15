@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import millify from 'millify';
 
 const VideoCard = ({ video }) => {
-  console.log(video);
+  //console.log(video);
   return (
     <Link to={`/watch/${video.video.videoId}`} className="text-decoration-none">
       <div className="text-light ">
