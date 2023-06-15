@@ -1,20 +1,40 @@
-import { AiFillYoutube, AiOutlineBell, AiOutlineSearch } from "react-icons/ai";
+import React, { useState } from 'react';
+import { HiOutlineBell } from 'react-icons/hi';
+import { BsSearch } from 'react-icons/bs';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const [query, setQuery] = useState('');
+  const navigate = useNavigate();
+  const handleSearch = () => {
+    if (!query) return;
+    navigate(`/search-result/${query}`);
+  };
   return (
-    <header className="navbar bg-dark text-light p-3 fixed-top">
-      <div className=" d-flex align-items-center gap-3">
-        <AiFillYoutube className=" fs-1 text-danger" role={"button"} />
-        <h2 role={"button"}>YouTube</h2>
-      </div>
-      <div className=" d-flex position-relative">
-        <input className=" form-control" type="text" />
-        <button className=" btn position-absolute end-0 ">
-          <AiOutlineSearch className=" fs-3 text-black" />
+    <header className="navbar bg-dark text-light ">
+      <Link to="/" className="text-decoration-none text-light">
+        <h1>
+          <img
+            src="https://www.freepnglogos.com/uploads/youtube-logo-hd-8.png"
+            style={{ width: '100px' }}
+          />
+          Youtube
+        </h1>
+      </Link>
+
+      <div className="d-flex">
+        <input
+          type="text"
+          className="form-control"
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <button className="btn btn-secondary" onClick={handleSearch}>
+          <BsSearch />
         </button>
       </div>
-      <span role={"button"} className=" fs-3">
-        <AiOutlineBell  />
+
+      <span className="pe-4 fs-3">
+        <HiOutlineBell />
       </span>
     </header>
   );

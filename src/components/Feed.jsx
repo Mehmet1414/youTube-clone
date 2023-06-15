@@ -1,23 +1,22 @@
-
-import { useContext } from "react";
-import { Context } from "../context/contextApi";
-import VideoCard from "./VideoCard";
-import "../App.css"
+import { useContext } from 'react';
+import { Context } from '../context/contextApi';
+import LeftNav from './LeftNav';
+import VideoCard from './VideoCard';
 
 const Feed = () => {
-  const {searchResult} = useContext(Context)
-  
+  // context içerisinde tutlan videoları çekme
+  const { searchResult } = useContext(Context);
+
   return (
-    <section className=" d-flex feed ">
-      
-      <div className=" d-flex justify-content-evenly flex-wrap gap-2 mt-5 " >
-        {searchResult.map((video,index)=>{
-          if (video.type !== "video")return
-         return <VideoCard video={video} key={index} />
-        }
-        )}
+    <div className="d-flex bg-dark" style={{ minHeight: '100vh' }}>
+      <LeftNav />
+      <div className="w-100 p-4 videos">
+        {searchResult.map((video, index) => {
+          if (video.type !== 'video') return;
+          return <VideoCard key={index} video={video} />;
+        })}
       </div>
-    </section>
+    </div>
   );
 };
 

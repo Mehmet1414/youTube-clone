@@ -1,28 +1,31 @@
-import categories from "../utils/constans";
-import { useContext } from "react";
-import { Context } from "../context/contextApi";
-import "../App.css"
+import { useContext } from 'react';
+import categories from "../utils/constans"
+import { Context } from '../context/contextApi';
 
 const LeftNav = () => {
+  // context yapısndan sağlanan state ve fonksiyonlara abone olma
   const { selectedCategory, setSelectedCategory } = useContext(Context);
-  
 
   return (
-    <div className=" bg-dark text-light d-flex flex-column gap-3 fixed-top overflow-scroll " style={{width:"140px", height:"100vh", top:"70px"}} >
-      {categories.map((item, index) => (
-        <div key={index}>
-          <div
-            className={`d-flex justify-content-start gap-2 ps-2 pe-2 fs-6 ${selectedCategory=== item.name && " bg-danger"} left-nav-item`}
-            
-            onClick={() => setSelectedCategory(item.name)}
-        
-          >
-            <span className=" d-flex align-items-center">{item.icon}</span>
-            <span className="  text-start">{item.name}</span>
-          </div>
-          {item.divider && <hr />}
-        </div>
-      ))}
+    <div className="bg-dark text-light d-flex flex-column gap-4">
+      {categories.map((item, index) => {
+        return (
+          <>
+            <div
+              key={index}
+              className={`p-2  ${
+                selectedCategory === item.name && 'bg-primary'
+              }`}
+              style={{ cursor: 'pointer' }}
+              onClick={() => setSelectedCategory(item.name)}
+            >
+              <span>{item.icon}</span>
+              <span className="mx-2">{item.name}</span>
+            </div>
+            {item.divider && <hr className="my-4" />}
+          </>
+        );
+      })}
     </div>
   );
 };
