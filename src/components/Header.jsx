@@ -18,18 +18,18 @@ const Header = () => {
             src="https://www.freepnglogos.com/uploads/youtube-logo-hd-8.png"
             style={{ width: '100px' }}
           />
-          Youtube
+          FineTube
         </h1>
       </Link>
 
-      <div className="d-flex">
+      <div className="d-flex position-relative">
         <input
           type="text"
-          className="form-control"
+          className=" form-control rounded-5 bg-transparent"
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button className="btn btn-secondary" onClick={handleSearch}>
-          <BsSearch />
+        <button className="btn position-absolute end-0 text-white" onClick={handleSearch}>
+          <BsSearch  />
         </button>
       </div>
 
